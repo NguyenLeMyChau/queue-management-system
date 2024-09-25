@@ -36,6 +36,12 @@
     line-height: 32px;
 }
 
+.text-xxl {
+    /* Extra extra large text */
+    font-size: 22px;
+    line-height: 33px;
+}
+
 .text-xl {
     /* Extra large text */
     font-size: 20px;
