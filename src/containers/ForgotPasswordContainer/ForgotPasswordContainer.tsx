@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './ForgotPasswordContainer.css';
 import Input from '../../components/input/Input';
 import Button from '../../components/button/Button';
+import { MdOutlineEmail } from "react-icons/md";
 
 interface ForgotPasswordContainerProps {
     onLogin: () => void;
@@ -20,9 +21,11 @@ const ForgotPasswordContainer: React.FC<ForgotPasswordContainerProps> = ({ onLog
         <form onSubmit={handleForgotPassword}>
             <div>
                 <Input
+                    type='email'
                     label="Vui lòng nhập email để đặt lại mật khẩu của bạn *"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    icon={<MdOutlineEmail />}
                 />
             </div>
 

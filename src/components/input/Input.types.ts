@@ -6,4 +6,5 @@ export interface InputProps extends ColorProps, SizeProps {
     placeholder?: string;
     value: string;
     onChange: InputChangeEvent;
+    icon?: JSX.Element;
 }
