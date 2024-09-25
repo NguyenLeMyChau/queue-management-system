@@ -37,3 +37,16 @@
     font-size: 25px;
     color: #858D9D;
 }
+
+.toggle-password {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    color: #555;
+}
+
+.toggle-password:hover {
+    color: #000;
+}

@@ -36,6 +36,7 @@ const SetPasswordContainer: React.FC<SetPasswordContainerProps> = ({ onLogin }) 
                 <div>
                     <Input
                         label="Nhập lại mật khẩu"
+                        type="password"
                         value={rePassword}
                         onChange={(e) => setRePassword(e.target.value)}
                     />
@@ -51,7 +52,7 @@ const SetPasswordContainer: React.FC<SetPasswordContainerProps> = ({ onLogin }) 
                         />
                     </div>
                 </div>
-                
+
             </form>
         </div>
     );
