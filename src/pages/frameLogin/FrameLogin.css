@@ -1,0 +1,17 @@
+.frame-login-left {
+    width: 40%;
+    height: 100%;
+    background-color: var(--background-color);
+    padding-top: 50px;
+    box-sizing: border-box;
+}
+
+.frame-login-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 100%;
+    background-color: var(--white-color);
+}

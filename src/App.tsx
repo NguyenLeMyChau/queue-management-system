@@ -1,10 +1,10 @@
 
 import './App.css';
-import Login from './pages/login/Login';
+import FrameLogin from './pages/frameLogin/FrameLogin';
 
 function App() {
   return (
-    <Login />
+    <FrameLogin />
   );
 }
 

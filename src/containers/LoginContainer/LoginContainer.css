@@ -8,8 +8,11 @@
 }
 
 .login-link {
-    color: #E73F3F;
+    background: none;
+    border: none;
     text-decoration: none;
+    cursor: pointer;
+    color: #E73F3F;
     transition: color 0.3s ease;
 
     &:hover {
@@ -30,22 +33,4 @@
 
 .login-button:hover {
     background-color: var(--title-2-color);
-}
-
-.login-left {
-    width: 40%;
-    height: 100%;
-    background-color: var(--background-color);
-    padding-top: 50px;
-    box-sizing: border-box;
-}
-
-.login-right {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 60%;
-    height: 100%;
-    background-color: var(--white-color);
 }

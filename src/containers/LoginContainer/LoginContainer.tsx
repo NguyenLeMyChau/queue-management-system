@@ -4,7 +4,12 @@ import Input from '../../components/input/Input';
 import Button from '../../components/button/Button';
 import Logo from '../../components/logo/Logo';
 
-const LoginContainer: React.FC = () => {
+
+interface LoginContainerProps {
+    onForgotPassword: () => void;
+}
+
+const LoginContainer: React.FC<LoginContainerProps> = ({ onForgotPassword }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -22,9 +27,9 @@ const LoginContainer: React.FC = () => {
     return (
         <div className='flex-column-center'>
 
-            <Logo width={170} height={136} margin='50px 0px' />
+            <Logo width={170} height={136} margin='35px 0px' />
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} style={{ width: 300 }}>
                 <div>
                     <Input
                         label="Tên đăng nhập *"
@@ -42,7 +47,11 @@ const LoginContainer: React.FC = () => {
                 </div>
 
                 <div className='login-options'>
-                    <a href='/' className='login-link text-sm font-weight-medium'>Quên mật khẩu?</a>
+                    <button
+                        className='login-link text-sm font-weight-medium'
+                        onClick={onForgotPassword}
+                    >
+                        Quên mật khẩu?</button>
                 </div>
 
                 <div className='login-button'>
