@@ -4,9 +4,9 @@ import { InputProps } from './Input.types';
 
 export default function Input(props: InputProps) {
     return (
-        <div className='input-container'>
-            <label className='input-label' style={{ color: props.color }}>{props.label}</label>
-            <div className='input-wrapper'>
+        <div className='flex-columm'>
+            <label className='input-label text-sm' style={{ color: props.color }}>{props.label}</label>
+            <div className='input-wrapper flex-row-align-center'>
                 {props.type === 'search' && <IoIosSearch className='input-icon' />}
                 <input
                     type={props.type || 'text'}

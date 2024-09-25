@@ -13,15 +13,8 @@ const LoginContainer: React.FC<LoginContainerProps> = ({ onForgotPassword }) => 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleLogin = (username: string, password: string) => {
-        // Xử lý đăng nhập ở đây
-        console.log('Username:', username);
-        console.log('Password:', password);
-    };
-
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
-        handleLogin(username, password);
     };
 
     return (
@@ -29,15 +22,13 @@ const LoginContainer: React.FC<LoginContainerProps> = ({ onForgotPassword }) => 
 
             <Logo width={170} height={136} margin='35px 0px' />
 
-            <form onSubmit={handleSubmit} style={{ width: 300 }}>
+            <form onSubmit={handleLogin} style={{ width: 300 }}>
                 <div>
                     <Input
                         label="Tên đăng nhập *"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                     />
-                </div>
-                <div>
                     <Input
                         label="Mật khẩu *"
                         type="password"
@@ -54,12 +45,14 @@ const LoginContainer: React.FC<LoginContainerProps> = ({ onForgotPassword }) => 
                         Quên mật khẩu?</button>
                 </div>
 
-                <div className='login-button'>
-                    <Button
-                        type='submit'
-                        text='Đăng nhập'
-                        backgroundImage='var(--title-color)'
-                    />
+                <div className='flex-row-center'>
+                    <div className='login-button'>
+                        <Button
+                            type='submit'
+                            text='Đăng nhập'
+                            backgroundImage='var(--title-color)'
+                        />
+                    </div>
                 </div>
             </form>
         </div>

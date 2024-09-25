@@ -12,13 +12,9 @@ interface ForgotPasswordContainerProps {
 const ForgotPasswordContainer: React.FC<ForgotPasswordContainerProps> = ({ onLogin, onForgotPassword }) => {
     const [email, setEmail] = useState('');
 
-    const handleForgotPassword = (email: string) => {
-        console.log('email:', email);
-    };
-
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleForgotPassword = (e: React.FormEvent) => {
         e.preventDefault();
-        handleForgotPassword(email);
+        onForgotPassword();
     };
 
     return (
@@ -28,7 +24,7 @@ const ForgotPasswordContainer: React.FC<ForgotPasswordContainerProps> = ({ onLog
 
             <h3>Đặt lại mật khẩu</h3>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleForgotPassword}>
                 <div>
                     <Input
                         label="Vui lòng nhập email để đặt lại mật khẩu của bạn *"
@@ -51,7 +47,6 @@ const ForgotPasswordContainer: React.FC<ForgotPasswordContainerProps> = ({ onLog
                             type='submit'
                             text='Tiếp tục'
                             backgroundColor='var(--title-color)'
-                            onClick={() => onForgotPassword()}
                         />
                     </div>
 

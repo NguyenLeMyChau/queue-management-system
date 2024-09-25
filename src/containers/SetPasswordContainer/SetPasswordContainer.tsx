@@ -41,14 +41,17 @@ const SetPasswordContainer: React.FC<SetPasswordContainerProps> = ({ onLogin }) 
                     />
                 </div>
 
-                <div className='login-button'>
-                    <Button
-                        type='submit'
-                        text='Xác nhận'
-                        backgroundImage='var(--title-color)'
-                        onClick={() => onLogin()}
-                    />
+                <div className='flex-row-center'>
+                    <div className='login-button'>
+                        <Button
+                            type='submit'
+                            text='Xác nhận'
+                            backgroundImage='var(--title-color)'
+                            onClick={() => onLogin()}
+                        />
+                    </div>
                 </div>
+                
             </form>
         </div>
     );

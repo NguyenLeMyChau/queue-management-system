@@ -1,18 +1,11 @@
 @import '../../style/layout.css';
 @import '../../style/text.css';
 
-.input-container {
-    @extend .flex-columm;
-}
-
 .input-label {
-    @extend .text-sm;
-    @extend .font-weight-medium;
     color: var(--black-color);
 }
 
 .input-wrapper {
-    @extend .flex-row-align-center;
     position: relative;
 }
 

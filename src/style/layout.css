@@ -57,6 +57,12 @@
     flex-direction: column;
 }
 
+.flex-columm-justify-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .flex-row-align-start {
     display: flex;
     flex-direction: row;

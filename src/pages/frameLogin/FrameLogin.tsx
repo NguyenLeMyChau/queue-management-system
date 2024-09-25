@@ -8,31 +8,26 @@ import SetPasswordContainer from '../../containers/SetPasswordContainer/SetPassw
 const FrameLogin = () => {
     const [currentStep, setCurrentStep] = useState<'login' | 'forgotPassword' | 'setPassword'>('login');
 
-    const handleLoginClick = () => {
-        setCurrentStep('login');
+    const handleStepChange = (step: 'login' | 'forgotPassword' | 'setPassword') => {
+        setCurrentStep(step);
     };
 
-    const handleForgotPasswordClick = () => {
-        setCurrentStep('forgotPassword');
+    const components = {
+        login: <LoginContainer onForgotPassword={() => handleStepChange('forgotPassword')} />,
+        forgotPassword: <ForgotPasswordContainer onLogin={() => handleStepChange('login')} onForgotPassword={() => handleStepChange('setPassword')} />,
+        setPassword: <SetPasswordContainer onLogin={() => handleStepChange('login')} />
     };
-
-    const handleSetPasswordClick = () => {
-        setCurrentStep('setPassword');
-    }
 
     return (
         <div className='centered-container'>
             <div className='frame-login-left'>
-                {currentStep === 'login' && <LoginContainer onForgotPassword={handleForgotPasswordClick} />}
-                {currentStep === 'forgotPassword' && <ForgotPasswordContainer onLogin={handleLoginClick} onForgotPassword={handleSetPasswordClick} />}
-                {currentStep === 'setPassword' && <SetPasswordContainer onLogin={handleLoginClick} />}
+                {components[currentStep]}
             </div>
-
             <div className='frame-login-right'>
                 <WelcomeContainer type={currentStep} />
             </div>
         </div>
     );
-}
+};
 
 export default FrameLogin;
