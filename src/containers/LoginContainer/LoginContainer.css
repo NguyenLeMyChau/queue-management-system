@@ -1,0 +1,51 @@
+@import '../../style/variables.css';
+@import '../../style/layout.css';
+@import '../../style/text.css';
+
+
+.login-options {
+    width: 100%;
+}
+
+.login-link {
+    color: #E73F3F;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: var(--title-color);
+    }
+
+    &:active {
+        color: var(--title-2-color);
+    }
+}
+
+.login-button {
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color: var(--title-color);
+}
+
+.login-button:hover {
+    background-color: var(--title-2-color);
+}
+
+.login-left {
+    width: 40%;
+    height: 100%;
+    background-color: var(--background-color);
+    padding-top: 50px;
+    box-sizing: border-box;
+}
+
+.login-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 100%;
+    background-color: var(--white-color);
+}
