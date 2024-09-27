@@ -21,6 +21,20 @@
     padding-left: 10px;
 }
 
+.input-error {
+    border: 1px solid var(--danger-color);
+}
+
+.error-message {
+    color: var(--danger-color);
+    margin-top: 10px;
+}
+
+.error-icon {
+    margin-right: 5px;
+    color: var(--danger-color);
+}
+
 /* CSS để ẩn dấu "x" trong input trên trình duyệt Chrome */
 .input-field::-webkit-search-cancel-button {
     -webkit-appearance: none;

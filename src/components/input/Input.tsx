@@ -20,7 +20,8 @@ export default function Input(props: InputProps) {
                 <input
                     type={props.type === 'password' && !showPassword ? 'password' : 'text'}
                     placeholder={props.placeholder}
-                    className='input-field'
+                    className={`input-field ${props.error ? 'input-error' : ''}`}
+                    name={props.name}
                     style={{ width: `${props.width}px`, height: `${props.height}px` }}
                     value={props.value}
                     onChange={props.onChange}
