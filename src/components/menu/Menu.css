@@ -1,0 +1,59 @@
+@import '../../style/layout.css';
+@import '../../style/text.css';
+
+.menu-body {
+    width: 12vw;
+    height: 100vh;
+    background-color: var(--white-color);
+    color: var(--menu-color);
+}
+
+.menu-logo {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.menu-menu {
+    width: 100%;
+    height: auto;
+}
+
+.menu-setting {
+    margin-top: auto;
+    margin-bottom: 30px;
+    width: calc(100% - 30px);
+    background-color: var(--default-color);
+    color: var(--title-2-color);
+    border-radius: 10px;
+    align-self: center;
+}
+
+.menu-detail {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    height: 20px;
+    padding: 15px;
+    padding-left: 20px;
+}
+
+.menu-detail:hover {
+    color: var(--title-color);
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 500;
+}
+
+.menu-detail.selected {
+    background-color: var(--title-2-color);
+    color: var(--white-color);
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 500;
+}
+
+.menu-detail p {
+    margin-left: 13px;
+    font-size: 15px;
+}

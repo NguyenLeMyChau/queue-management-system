@@ -1,0 +1,25 @@
+@import '../../style/layout.css';
+@import '../../style/text.css';
+
+.frame-container {
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+    background-color: #F0F1F3;
+}
+
+.frame-content {
+    flex-grow: 1;
+    height: 100%;
+    padding-left: 30px;
+}
+
+.frame-header {
+    padding-right: 50px;
+}
+
+
+.frame-container .main-content {
+    flex-grow: 1;
+    background-color: aquamarine;
+}

@@ -4,12 +4,14 @@ import Input from '../../components/input/Input';
 import Button from '../../components/button/Button';
 
 import { RiErrorWarningLine } from "react-icons/ri";
+import { useNavigate } from 'react-router-dom';
 
 interface LoginContainerProps {
     onForgotPassword: () => void;
 }
 
 const LoginContainer: React.FC<LoginContainerProps> = ({ onForgotPassword }) => {
+    const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(false);
@@ -25,7 +27,7 @@ const LoginContainer: React.FC<LoginContainerProps> = ({ onForgotPassword }) => 
             setError(true);
         } else {
             setError(false);
-            // Xử lý đăng nhập thành công
+            navigate('/admin');
         }
     };
 

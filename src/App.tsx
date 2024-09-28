@@ -1,10 +1,10 @@
 
 import './App.css';
-import FrameLogin from './pages/frameLogin/FrameLogin';
+import AppRoutes from './routes/AppRoutes';
 
 function App() {
   return (
-    <FrameLogin />
+    <AppRoutes />
   );
 }
 
