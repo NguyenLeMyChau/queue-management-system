@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './FrameLogin.css';
 import WelcomeContainer from '../../containers/WelcomeContainer/WelcomeContainer';
 import LoginContainer from '../../containers/LoginContainer/LoginContainer';
@@ -18,6 +18,20 @@ const FrameLogin = () => {
         forgotPassword: <ForgotPasswordContainer onLogin={() => handleStepChange('login')} onForgotPassword={() => handleStepChange('setPassword')} />,
         setPassword: <SetPasswordContainer onLogin={() => handleStepChange('login')} />
     };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Ngăn chặn hành động mặc định (ví dụ: gửi form)
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, []);
 
     return (
         <div className='frame-login-container'>
