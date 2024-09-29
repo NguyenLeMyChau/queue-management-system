@@ -3,7 +3,7 @@ import Logo from '../logo/Logo';
 import useMenuItems from '../../hooks/useMenuItems';
 
 interface MenuProps {
-    onchange: (selectedItem: JSX.Element, selectedText: string) => void;
+    onchange: (path: string, selectedText: string) => void;
 }
 
 function Menu({ onchange }: MenuProps) {
@@ -18,10 +18,10 @@ function Menu({ onchange }: MenuProps) {
             {menuItems.map((menuSection) => (
                 <div className={`menu-menu ${menuSection.section === 'Logout' ? 'menu-setting flex-center' : ''}`} key={menuSection.section}>
                     <div>
-                        {menuSection.items.map(({ Icon, label, text, element }) => (
+                        {menuSection.items.map(({ Icon, label, text, path }) => (
                             <div
                                 className={`menu-detail flex-row-align-center ${selectedItem === label ? 'selected' : ''}`}
-                                onClick={() => handleItemClick(label, element, text)}
+                                onClick={() => handleItemClick(label, path, text)}
                                 key={label}
                             >
                                 <Icon size={22} />

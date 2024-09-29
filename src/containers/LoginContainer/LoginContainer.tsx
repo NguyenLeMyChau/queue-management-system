@@ -27,7 +27,7 @@ const LoginContainer: React.FC<LoginContainerProps> = ({ onForgotPassword }) => 
             setError(true);
         } else {
             setError(false);
-            navigate('/admin');
+            navigate('/admin/dashboard');
         }
     };
 

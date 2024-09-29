@@ -1,6 +1,6 @@
 import './Header.css';
 import avatar from '../../assets/avatar.png';
-import { FaBell } from "react-icons/fa";
+import { FaAngleRight, FaBell } from "react-icons/fa";
 
 interface HeaderProps {
     selectedMenuText: string[];
@@ -10,7 +10,16 @@ export default function Header({ selectedMenuText }: HeaderProps) {
     return (
         <div className='flex-row-space-between'>
             <div className='flex-row-align-center'>
-                <h3>{selectedMenuText}</h3>
+                <h3>
+                    {selectedMenuText.map((item, index) => (
+                        <span key={index} className='breadcrumb-item'>
+                            {item}
+                            {index < selectedMenuText.length - 1 && (
+                                <FaAngleRight className='breadcrumb-icon' size={15}/>
+                            )}
+                        </span>
+                    ))}
+                </h3>
             </div>
 
             <div className='flex-row-align-center'>

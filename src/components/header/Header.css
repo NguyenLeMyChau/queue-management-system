@@ -28,20 +28,16 @@
     font-weight: 500;
 }
 
-.breadcrumbs {
-    gap: 10px;
-}
-
 .breadcrumb-item {
-    cursor: pointer;
-    color: gray;
+    display: inline-flex;
+    align-items: center;
+    color: #7E7D88;
 }
 
-.breadcrumb-item.active {
-    color: blue;
-    font-weight: bold;
+.breadcrumb-icon {
+    margin: 0 8px; /* Khoảng cách giữa các item */
 }
 
-.breadcrumb-item.clickable:hover {
-    text-decoration: underline;
+.breadcrumb-item:last-child {
+    color: #FF7506; /* Màu cho breadcrumb cuối cùng */
 }

@@ -1,18 +1,15 @@
-import { useState } from 'react';
-import Dashboard from '../dashboard/Dashboard';
 import './FrameAdmin.css';
 import Menu from '../../components/menu/Menu';
 import Header from '../../components/header/Header';
 import { useBreadcrumbs } from '../../hooks/useBreadcrumbs';
+import { Outlet } from 'react-router-dom';
 
 const FrameAdmin = () => {
-    const [currentContent, setCurrentContent] = useState<JSX.Element>(<Dashboard />);
-    const { breadcrumbs, setBreadcrumbs } = useBreadcrumbs();
+    const { breadcrumbs } = useBreadcrumbs();
 
-    const handleMenuChange = (selectedItem: JSX.Element, selectedText: string) => {
+    const handleMenuChange = (selectedPath: string, selectedText: string) => {
+        console.log('selectedPath: ', selectedPath);
         console.log('selectedText: ', selectedText);
-        setCurrentContent(selectedItem);
-        setBreadcrumbs([selectedText]);
     };
 
 
@@ -25,7 +22,7 @@ const FrameAdmin = () => {
                 </header>
 
                 <main className='main-content'>
-                    {currentContent}
+                    <Outlet />
                 </main>
 
             </div>
