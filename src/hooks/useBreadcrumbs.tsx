@@ -11,7 +11,9 @@ const breadcrumbConfig: Record<string, string[]> = {
     '/admin/dashboard': ['Tổng quan'],
     '/admin/device': ['Thiết bị', 'Danh sách thiết bị'],
     '/admin/device/add': ['Thiết bị', 'Danh sách thiết bị', 'Thêm thiết bị'],
-    '/admin/report': ['Báo cáo', 'Danh sách báo cáo'],
+    '/admin/chat': ['Dịch vụ', 'Danh sách dịch vụ'],
+    '/admin/level': ['Cấp số', 'Danh sách cấp số'],
+    '/admin/report': ['Báo cáo', 'Lập báo cáo'],
 };
 
 // Thêm các đường dẫn tương ứng cho các breadcrumb
@@ -19,6 +21,8 @@ export const breadcrumbPaths: Record<string, string[]> = {
     '/admin/dashboard': ['/admin/dashboard'],
     '/admin/device': ['/admin/device'],
     '/admin/device/add': ['/admin/device', '/admin/device', '/admin/device/add'],
+    '/admin/chat': ['/admin/chat'],
+    '/admin/level': ['/admin/level'],
     '/admin/report': ['/admin/report'],
 };
 
