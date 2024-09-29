@@ -3,7 +3,7 @@ import avatar from '../../assets/avatar.png';
 import { FaBell } from "react-icons/fa";
 
 interface HeaderProps {
-    selectedMenuText: string;
+    selectedMenuText: string[];
 }
 
 export default function Header({ selectedMenuText }: HeaderProps) {

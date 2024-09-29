@@ -7,12 +7,16 @@ import { AiOutlineDesktop, AiOutlineProduct, AiOutlineFileDone } from "react-ico
 import { SlLayers } from "react-icons/sl";
 import { TbSettings2 } from "react-icons/tb";
 import Dashboard from '../pages/dashboard/Dashboard';
+import Device from '../pages/device/Device';
+import Chat from '../pages/chat/Chat';
+import Level from '../pages/level/Level';
+import Report from '../pages/report/Report';
 
-const useMenuItems = (onchange) => {
+const useMenuItems = (onchange: (selectedItem: JSX.Element, selectedText: string) => void) => {
     const navigate = useNavigate();
     const [selectedItem, setSelectedItem] = useState('Dashboard');
 
-    const handleItemClick = async (label, element, text) => {
+    const handleItemClick = async (label: string, element?: JSX.Element, text?: string) => {
         setSelectedItem(label);
         if (label === 'Logout') {
             try {
@@ -20,20 +24,20 @@ const useMenuItems = (onchange) => {
             } catch (error) {
                 console.log(error);
             }
-        } else {
+        } else if (element && text) {
             onchange(element, text);
         }
-    }
+    };
 
     const menuItems = [
         {
             section: "Menu",
             items: [
                 { Icon: AiOutlineProduct, label: "Dashboard", text: "Tổng quan", element: <Dashboard /> },
-                { Icon: AiOutlineDesktop, label: "Device", text: "Thiết bị" },
-                { Icon: PiChatsLight, label: "Chat", text: "Dịch vụ" },
-                { Icon: SlLayers, label: "Level", text: "Cấp số" },
-                { Icon: AiOutlineFileDone, label: "Report", text: "Báo cáo" },
+                { Icon: AiOutlineDesktop, label: "Device", text: "Thiết bị", element: <Device /> },
+                { Icon: PiChatsLight, label: "Chat", text: "Dịch vụ", element: <Chat /> },
+                { Icon: SlLayers, label: "Level", text: "Cấp số", element: <Level /> },
+                { Icon: AiOutlineFileDone, label: "Report", text: "Báo cáo", element: <Report /> },
                 { Icon: TbSettings2, label: "Setting", text: "Cài đặt hệ thống" },
             ],
         },
@@ -43,7 +47,7 @@ const useMenuItems = (onchange) => {
                 { Icon: IoIosLogOut, label: "Logout", text: "Đăng xuất" }
             ]
         }
-    ]
+    ];
 
     return {
         selectedItem,

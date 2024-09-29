@@ -1,10 +1,13 @@
 
 import './App.css';
+import { BreadcrumbsProvider } from './hooks/useBreadcrumbs';
 import AppRoutes from './routes/AppRoutes';
 
 function App() {
   return (
-    <AppRoutes />
+    <BreadcrumbsProvider>
+      <AppRoutes />
+    </BreadcrumbsProvider>
   );
 }
 

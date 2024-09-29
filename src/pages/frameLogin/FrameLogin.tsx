@@ -20,7 +20,7 @@ const FrameLogin = () => {
     };
 
     return (
-        <div className='centered-container'>
+        <div className='frame-login-container'>
             <div className='frame-login-left'>
                 <div className='flex-column-center'>
                     <Logo width={170} height={136} margin='35px 0px' />
