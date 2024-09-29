@@ -1,24 +1,38 @@
 import './Header.css';
 import avatar from '../../assets/avatar.png';
 import { FaAngleRight, FaBell } from "react-icons/fa";
+import { breadcrumbPaths, useBreadcrumbs } from '../../hooks/useBreadcrumbs';
+import { Link } from 'react-router-dom';
 
-interface HeaderProps {
-    selectedMenuText: string[];
-}
+export default function Header() {
+    const { breadcrumbs } = useBreadcrumbs();
+    const currentPaths = breadcrumbPaths[window.location.pathname] || [];
 
-export default function Header({ selectedMenuText }: HeaderProps) {
     return (
         <div className='flex-row-space-between'>
             <div className='flex-row-align-center'>
                 <h3>
-                    {selectedMenuText.map((item, index) => (
-                        <span key={index} className='breadcrumb-item'>
-                            {item}
-                            {index < selectedMenuText.length - 1 && (
-                                <FaAngleRight className='breadcrumb-icon' size={15}/>
-                            )}
-                        </span>
-                    ))}
+                    {breadcrumbs.length > 0 ? (
+                        breadcrumbs.map((item, index) => {
+                            const currentPath = currentPaths[index] || '#';
+                            return (
+                                <span key={index} className='breadcrumb-item'>
+                                    {index === 0 || index === breadcrumbs.length - 1 ? (
+                                        <span className={index === breadcrumbs.length - 1 ? 'breadcrumb-active' : ''}>{item}</span>
+                                    ) : (
+                                        <Link to={currentPath} className='breadcrumb-link'>
+                                            {item}
+                                        </Link>
+                                    )}
+                                    {index < breadcrumbs.length - 1 && (
+                                        <FaAngleRight className='breadcrumb-icon' size={15} />
+                                    )}
+                                </span>
+                            );
+                        })
+                    ) : (
+                        <span className='breadcrumb-item'>No breadcrumbs available</span>
+                    )}
                 </h3>
             </div>
 

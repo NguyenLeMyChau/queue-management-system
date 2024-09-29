@@ -35,9 +35,20 @@
 }
 
 .breadcrumb-icon {
-    margin: 0 8px; /* Khoảng cách giữa các item */
+    margin: 0 8px;
+    /* Khoảng cách giữa các item */
 }
 
 .breadcrumb-item:last-child {
-    color: #FF7506; /* Màu cho breadcrumb cuối cùng */
+    color: var(--title-2-color);
+    /* Màu cho breadcrumb cuối cùng */
+}
+
+.breadcrumb-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.breadcrumb-link:hover {
+    color: var(--icon-color);
 }

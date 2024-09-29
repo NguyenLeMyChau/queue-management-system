@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import FrameLogin from '../pages/frameLogin/FrameLogin';
 import FrameAdmin from '../pages/frameAdmin/FrameAdmin';
 import Dashboard from '../pages/dashboard/Dashboard';
@@ -15,7 +15,7 @@ const AppRoutes: React.FC = () => {
         <Router>
             <BreadcrumbsProvider>
                 <Routes>
-                    <Route path="*" element={<FrameLogin />} />
+                    <Route path="*" element={<Navigate to="/login" replace />} />
                     <Route path="/login" element={<FrameLogin />} />
                     <Route path="/admin" element={<FrameAdmin />}>
                         <Route path="dashboard" element={<Dashboard />} />

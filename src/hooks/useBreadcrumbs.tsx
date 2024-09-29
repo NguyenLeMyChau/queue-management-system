@@ -14,6 +14,14 @@ const breadcrumbConfig: Record<string, string[]> = {
     '/admin/report': ['Báo cáo', 'Danh sách báo cáo'],
 };
 
+// Thêm các đường dẫn tương ứng cho các breadcrumb
+export const breadcrumbPaths: Record<string, string[]> = {
+    '/admin/dashboard': ['/admin/dashboard'],
+    '/admin/device': ['/admin/device'],
+    '/admin/device/add': ['/admin/device', '/admin/device', '/admin/device/add'],
+    '/admin/report': ['/admin/report'],
+};
+
 export const BreadcrumbsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [breadcrumbs, setBreadcrumbs] = useState<string[]>([]);
     const location = useLocation(); // Lấy thông tin đường dẫn hiện tại
@@ -22,6 +30,7 @@ export const BreadcrumbsProvider: React.FC<{ children: ReactNode }> = ({ childre
         const currentBreadcrumbs = breadcrumbConfig[location.pathname] || [];
         setBreadcrumbs(currentBreadcrumbs);
     }, [location.pathname]);
+
 
     return (
         <BreadcrumbsContext.Provider value={{ breadcrumbs }}>

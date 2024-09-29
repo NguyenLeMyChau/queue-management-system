@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useMemo, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { IoIosLogOut } from "react-icons/io";
 import { PiChatsLight } from "react-icons/pi";
@@ -10,22 +10,10 @@ import { TbSettings2 } from "react-icons/tb";
 const useMenuItems = (onchange: (selectedPath: string, selectedText: string) => void) => {
     const navigate = useNavigate();
     const [selectedItem, setSelectedItem] = useState('Dashboard');
+    const location = useLocation();
 
-    const handleItemClick = async (label: string, path?: string, text?: string) => {
-        setSelectedItem(label);
-        if (label === 'Logout') {
-            try {
-                navigate('/login');
-            } catch (error) {
-                console.log(error);
-            }
-        } else if (path && text) {
-            navigate(path);
-            onchange(path, text);
-        }
-    };
-
-    const menuItems = [
+    // Define menuItems before using it
+    const menuItems = useMemo(() => [
         {
             section: "Menu",
             items: [
@@ -34,16 +22,50 @@ const useMenuItems = (onchange: (selectedPath: string, selectedText: string) => 
                 { Icon: PiChatsLight, label: "Chat", text: "Dịch vụ", path: "/admin/chat" },
                 { Icon: SlLayers, label: "Level", text: "Cấp số", path: "/admin/level" },
                 { Icon: AiOutlineFileDone, label: "Report", text: "Báo cáo", path: "/admin/report" },
-                { Icon: TbSettings2, label: "Setting", text: "Cài đặt hệ thống" }
+                { Icon: TbSettings2, label: "Setting", text: "Cài đặt hệ thống", path: "/admin/dashboard" }
             ]
         },
         {
             section: "Logout",
             items: [
-                { Icon: IoIosLogOut, label: "Logout", text: "Đăng xuất" }
+                { Icon: IoIosLogOut, label: "Logout", text: "Đăng xuất", path: "/login" }
             ]
         }
-    ];
+    ], []); // menuItems is created only once
+
+    useEffect(() => {
+        // Update selectedItem when the path changes
+        const currentPath = location.pathname;
+
+        const menuItem = menuItems
+            .flatMap(section => section.items)
+            .find(item => item.path === currentPath);
+
+        if (menuItem) {
+            setSelectedItem(menuItem.label);
+        } else {
+            // Check for parent paths
+            const parentItem = menuItems
+                .flatMap(section => section.items)
+                .find(item => currentPath.startsWith(item.path) && item.path !== currentPath);
+
+            if (parentItem) {
+                setSelectedItem(parentItem.label);
+            } else {
+                setSelectedItem('Dashboard'); // Set default if no matching item
+            }
+        }
+    }, [location.pathname, menuItems]);
+
+    const handleItemClick = async (label: string, path?: string, text?: string) => {
+        setSelectedItem(label);
+        if (label === 'Logout') {
+            navigate('/login');
+        } else if (path && text) {
+            navigate(path);
+            onchange(path, text);
+        }
+    };
 
     return {
         selectedItem,
