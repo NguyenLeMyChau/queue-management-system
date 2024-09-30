@@ -4,15 +4,15 @@ import { BsPlusSquareFill } from "react-icons/bs";
 import { RiDownloadCloudFill } from "react-icons/ri";
 import TableData from '../../containers/table/TableData';
 import usePagination from '../../hooks/usePagination';
-import { useParams } from 'react-router-dom';
 
 interface FrameAdminDataProps {
     // data: Array<any>;
     // columns: Array<any>;
     itemsPerPage?: number;
+    stateInitialize?: boolean;
 }
 
-const FrameAdminData: React.FC<FrameAdminDataProps> = ({ itemsPerPage }) => {
+const FrameAdminData: React.FC<FrameAdminDataProps> = ({ itemsPerPage, stateInitialize }) => {
     const data = [
         { id: 1, name: 'Thiết bị 1', status: 'Hoạt động', location: 'Hà Nội' },
         { id: 2, name: 'Thiết bị 2', status: 'Bảo trì', location: 'Hồ Chí Minh' },
@@ -43,10 +43,9 @@ const FrameAdminData: React.FC<FrameAdminDataProps> = ({ itemsPerPage }) => {
         { key: 'location', title: 'Vị trí', dataIndex: 'location', width: '30%' },
     ];
 
-    const { pageNumber } = useParams<{ pageNumber?: string }>();
-    const page = pageNumber ? parseInt(pageNumber, 10) : 1;
 
-    const { totalPages, currentItems, goToPage } = usePagination(data, itemsPerPage ? itemsPerPage : 9, page);
+    const { totalPages, currentItems, goToPage, currentPage } =
+        usePagination(data, itemsPerPage ? itemsPerPage : 9, false);
 
     return (
         <div className='frame-data-container'>
@@ -68,19 +67,19 @@ const FrameAdminData: React.FC<FrameAdminDataProps> = ({ itemsPerPage }) => {
 
                     {totalPages > 0 && (
                         <div className='pagination'>
-                            <button onClick={() => goToPage(page - 1)} disabled={page === 1}>
+                            <button onClick={() => goToPage(currentPage - 1)} disabled={currentPage === 1}>
                                 &lt;
                             </button>
                             {Array.from({ length: totalPages }, (_, index) => (
                                 <button
                                     key={index + 1}
                                     onClick={() => goToPage(index + 1)}
-                                    className={page === index + 1 ? 'active' : ''}
+                                    className={currentPage === index + 1 ? 'active' : ''}
                                 >
                                     {index + 1}
                                 </button>
                             ))}
-                            <button onClick={() => goToPage(page + 1)} disabled={page === totalPages}>
+                            <button onClick={() => goToPage(currentPage + 1)} disabled={currentPage === totalPages}>
                                 &gt;
                             </button>
                         </div>

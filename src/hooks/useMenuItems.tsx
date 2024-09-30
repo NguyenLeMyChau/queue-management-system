@@ -12,7 +12,6 @@ const useMenuItems = (onchange: (selectedPath: string, selectedText: string) => 
     const [selectedItem, setSelectedItem] = useState('Dashboard');
     const location = useLocation();
 
-    // Define menuItems before using it
     const menuItems = useMemo(() => [
         {
             section: "Menu",
@@ -22,7 +21,7 @@ const useMenuItems = (onchange: (selectedPath: string, selectedText: string) => 
                 { Icon: PiChatsLight, label: "Chat", text: "Dịch vụ", path: "/admin/chat" },
                 { Icon: SlLayers, label: "Level", text: "Cấp số", path: "/admin/level" },
                 { Icon: AiOutlineFileDone, label: "Report", text: "Báo cáo", path: "/admin/report" },
-                { Icon: TbSettings2, label: "Setting", text: "Cài đặt hệ thống", path: "/admin/setting/page/:pageNumber" }
+                { Icon: TbSettings2, label: "Setting", text: "Cài đặt hệ thống", path: "/admin/setting" }
             ]
         },
         {
@@ -31,29 +30,19 @@ const useMenuItems = (onchange: (selectedPath: string, selectedText: string) => 
                 { Icon: IoIosLogOut, label: "Logout", text: "Đăng xuất", path: "/login" }
             ]
         }
-    ], []); // menuItems is created only once
+    ], []);
 
     useEffect(() => {
-        // Update selectedItem when the path changes
         const currentPath = location.pathname;
 
         const menuItem = menuItems
             .flatMap(section => section.items)
-            .find(item => item.path === currentPath);
+            .find(item => currentPath.includes(item.path));
 
         if (menuItem) {
             setSelectedItem(menuItem.label);
         } else {
-            // Check for parent paths
-            const parentItem = menuItems
-                .flatMap(section => section.items)
-                .find(item => currentPath.startsWith(item.path) && item.path !== currentPath);
-
-            if (parentItem) {
-                setSelectedItem(parentItem.label);
-            } else {
-                setSelectedItem('Dashboard'); // Set default if no matching item
-            }
+            setSelectedItem('Dashboard');
         }
     }, [location.pathname, menuItems]);
 
@@ -62,7 +51,10 @@ const useMenuItems = (onchange: (selectedPath: string, selectedText: string) => 
         if (label === 'Logout') {
             navigate('/login');
         } else if (path && text) {
-            navigate(path);
+            const currentPath = location.pathname;
+            const pageMatch = currentPath.match(/page=(\d+)/);
+            const pageNumber = pageMatch ? pageMatch[1] : 1; // Mặc định là 1 nếu không có pageNumber
+            navigate(`${path}?page=${pageNumber}`); // Điều hướng đến path với query page
             onchange(path, text);
         }
     };

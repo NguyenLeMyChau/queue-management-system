@@ -25,7 +25,7 @@ const AppRoutes: React.FC = () => {
                         <Route path="chat" element={<Chat />} />
                         <Route path="level" element={<Level />} />
                         <Route path="report" element={<Report />} />
-                        <Route path='setting/page/:pageNumber' element={<FrameAdminData />} />
+                        <Route path='setting' element={<FrameAdminData />} />
                     </Route>
                 </Routes>
             </BreadcrumbsProvider>

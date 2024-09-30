@@ -1,26 +1,31 @@
 import { useLocation, useNavigate } from "react-router-dom";
 
-
-const usePagination = <T,>(items: T[], itemsPerPage: number, page: number) => {
+const usePagination = <T,>(data: T[], itemsPerPage: number, stateInitialize: boolean) => {
     const navigate = useNavigate();
     const location = useLocation();
 
+    const { search } = location;
+    const queryParams = new URLSearchParams(search);
+    const pageNumber = queryParams.get('page');
+
+    // Chỉ khởi tạo page=1 nếu shouldInitialize là true
+    const page = stateInitialize && !pageNumber ? 1 : (pageNumber ? parseInt(pageNumber, 10) : 1);
+
     const indexOfLastItem = page * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
-
-    const totalPages = Math.ceil(items.length / itemsPerPage);
+    const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+    const totalPages = Math.ceil(data.length / itemsPerPage);
 
     const goToPage = (page: number) => {
-        const currentPath = location.pathname.split("/page")[0];
-        console.log('currentPath', currentPath);
-        navigate(`${currentPath}/page/${page}`);
+        const currentPath = location.pathname;
+        navigate(`${currentPath}?page=${page}`);
     };
 
     return {
         totalPages,
         currentItems,
-        goToPage
+        goToPage,
+        currentPage: page,
     };
 };
 
