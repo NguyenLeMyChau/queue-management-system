@@ -18,6 +18,10 @@ const usePagination = <T,>(data: T[], itemsPerPage: number) => {
 
     const goToPage = (page: number) => {
         const currentPath = location.pathname;
+        if (page === 1) {
+            navigate(currentPath);
+            return;
+        }
         navigate(`${currentPath}?page=${page}`);
     };
 
