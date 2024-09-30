@@ -9,10 +9,9 @@ interface FrameAdminDataProps {
     // data: Array<any>;
     // columns: Array<any>;
     itemsPerPage?: number;
-    stateInitialize?: boolean;
 }
 
-const FrameAdminData: React.FC<FrameAdminDataProps> = ({ itemsPerPage, stateInitialize }) => {
+const FrameAdminData: React.FC<FrameAdminDataProps> = ({ itemsPerPage }) => {
     const data = [
         { id: 1, name: 'Thiết bị 1', status: 'Hoạt động', location: 'Hà Nội' },
         { id: 2, name: 'Thiết bị 2', status: 'Bảo trì', location: 'Hồ Chí Minh' },
@@ -45,7 +44,7 @@ const FrameAdminData: React.FC<FrameAdminDataProps> = ({ itemsPerPage, stateInit
 
 
     const { totalPages, currentItems, goToPage, currentPage } =
-        usePagination(data, itemsPerPage ? itemsPerPage : 9, false);
+        usePagination(data, itemsPerPage ? itemsPerPage : 9);
 
     return (
         <div className='frame-data-container'>

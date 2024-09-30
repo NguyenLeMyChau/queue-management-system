@@ -51,10 +51,7 @@ const useMenuItems = (onchange: (selectedPath: string, selectedText: string) => 
         if (label === 'Logout') {
             navigate('/login');
         } else if (path && text) {
-            const currentPath = location.pathname;
-            const pageMatch = currentPath.match(/page=(\d+)/);
-            const pageNumber = pageMatch ? pageMatch[1] : 1; // Mặc định là 1 nếu không có pageNumber
-            navigate(`${path}?page=${pageNumber}`); // Điều hướng đến path với query page
+            navigate(`${path}`);
             onchange(path, text);
         }
     };

@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 
-const usePagination = <T,>(data: T[], itemsPerPage: number, stateInitialize: boolean) => {
+const usePagination = <T,>(data: T[], itemsPerPage: number) => {
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -9,7 +9,7 @@ const usePagination = <T,>(data: T[], itemsPerPage: number, stateInitialize: boo
     const pageNumber = queryParams.get('page');
 
     // Chỉ khởi tạo page=1 nếu shouldInitialize là true
-    const page = stateInitialize && !pageNumber ? 1 : (pageNumber ? parseInt(pageNumber, 10) : 1);
+    const page = (pageNumber ? parseInt(pageNumber, 10) : 1);
 
     const indexOfLastItem = page * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;

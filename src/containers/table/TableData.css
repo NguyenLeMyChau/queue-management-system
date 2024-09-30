@@ -60,11 +60,17 @@
     border: 1px solid #ccc;
     background-color: #fff;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .pagination button:disabled {
     cursor: not-allowed;
     opacity: 0.5;
+}
+
+.pagination button.active {
+    background-color: var(--title-2-color);
+    color: var(--white-color);
 }
 
 .pagination span {
