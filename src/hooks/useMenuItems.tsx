@@ -22,7 +22,7 @@ const useMenuItems = (onchange: (selectedPath: string, selectedText: string) => 
                 { Icon: PiChatsLight, label: "Chat", text: "Dịch vụ", path: "/admin/chat" },
                 { Icon: SlLayers, label: "Level", text: "Cấp số", path: "/admin/level" },
                 { Icon: AiOutlineFileDone, label: "Report", text: "Báo cáo", path: "/admin/report" },
-                { Icon: TbSettings2, label: "Setting", text: "Cài đặt hệ thống", path: "/admin/dashboard" }
+                { Icon: TbSettings2, label: "Setting", text: "Cài đặt hệ thống", path: "/admin/setting/page/:pageNumber" }
             ]
         },
         {

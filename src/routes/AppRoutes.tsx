@@ -9,6 +9,7 @@ import Chat from '../pages/chat/Chat';
 import Level from '../pages/level/Level';
 import Report from '../pages/report/Report';
 import { BreadcrumbsProvider } from '../hooks/useBreadcrumbs';
+import FrameAdminData from '../pages/frameAdmin/FrameAdminData';
 
 const AppRoutes: React.FC = () => {
     return (
@@ -24,6 +25,7 @@ const AppRoutes: React.FC = () => {
                         <Route path="chat" element={<Chat />} />
                         <Route path="level" element={<Level />} />
                         <Route path="report" element={<Report />} />
+                        <Route path='setting/page/:pageNumber' element={<FrameAdminData />} />
                     </Route>
                 </Routes>
             </BreadcrumbsProvider>
