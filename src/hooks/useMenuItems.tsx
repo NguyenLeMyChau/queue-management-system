@@ -18,7 +18,7 @@ const useMenuItems = (onchange: (selectedPath: string, selectedText: string) => 
             items: [
                 { Icon: AiOutlineProduct, label: "Dashboard", text: "Tổng quan", path: "/admin/dashboard" },
                 { Icon: AiOutlineDesktop, label: "Device", text: "Thiết bị", path: "/admin/device" },
-                { Icon: PiChatsLight, label: "Chat", text: "Dịch vụ", path: "/admin/chat" },
+                { Icon: PiChatsLight, label: "Service", text: "Dịch vụ", path: "/admin/service" },
                 { Icon: SlLayers, label: "Level", text: "Cấp số", path: "/admin/level" },
                 { Icon: AiOutlineFileDone, label: "Report", text: "Báo cáo", path: "/admin/report" },
                 { Icon: TbSettings2, label: "Setting", text: "Cài đặt hệ thống", path: "/admin/setting" }

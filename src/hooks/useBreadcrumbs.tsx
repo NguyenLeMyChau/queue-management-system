@@ -7,6 +7,7 @@ interface BreadcrumbsContextType {
 
 const BreadcrumbsContext = createContext<BreadcrumbsContextType | undefined>(undefined);
 
+// Thêm các breadcrumb tương ứng cho các đường dẫn
 const breadcrumbConfig: Record<string, string[]> = {
     '/admin/dashboard': ['Tổng quan'],
     '/admin/device': ['Thiết bị', 'Danh sách thiết bị'],

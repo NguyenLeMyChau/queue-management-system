@@ -39,6 +39,7 @@
 }
 
 .menu-detail:hover {
+    background-color: var(--default-color);
     color: var(--title-color);
     font-size: 20px;
     line-height: 30px;

@@ -5,11 +5,10 @@ import FrameAdmin from '../pages/frameAdmin/FrameAdmin';
 import Dashboard from '../pages/dashboard/Dashboard';
 import Device from '../pages/device/Device';
 import AddDevice from '../pages/device/AddDevice';
-import Chat from '../pages/chat/Chat';
+import Service from '../pages/service/Service';
 import Level from '../pages/level/Level';
 import Report from '../pages/report/Report';
 import { BreadcrumbsProvider } from '../hooks/useBreadcrumbs';
-import FrameAdminData from '../pages/frameAdmin/FrameAdminData';
 
 const AppRoutes: React.FC = () => {
     return (
@@ -22,10 +21,9 @@ const AppRoutes: React.FC = () => {
                         <Route path="dashboard" element={<Dashboard />} />
                         <Route path="device" element={<Device />} />
                         <Route path="device/add" element={<AddDevice />} />
-                        <Route path="chat" element={<Chat />} />
+                        <Route path="service" element={<Service />} />
                         <Route path="level" element={<Level />} />
                         <Route path="report" element={<Report />} />
-                        <Route path='setting' element={<FrameAdminData />} />
                     </Route>
                 </Routes>
             </BreadcrumbsProvider>
